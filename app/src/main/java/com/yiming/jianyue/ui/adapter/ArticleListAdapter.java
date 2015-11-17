@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.yiming.jianyue.R;
 import com.yiming.jianyue.data.WeixinArticles;
-import com.yiming.jianyue.ui.WebviewActivity;
+import com.yiming.jianyue.ui.ScrollingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,9 +96,10 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListVH> impl
     @Override
     public void onItemClick(View view, int position) {
         WeixinArticles article = lists.get(position);
-        Intent mIntent = new Intent(mActivity, WebviewActivity.class);
+        Intent mIntent = new Intent(mActivity, ScrollingActivity.class);
         mIntent.putExtra("title", article.getTitle());
         mIntent.putExtra("url", article.getUrl());
+        mIntent.putExtra("imgUrl",article.getFirstImg());
         mActivity.startActivity(mIntent);
     }
 

@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity
         initRefreshLayout();
         initRecyclerView();
         api = RxUtils.createApi(Api.class, Config.WEIXIN);
-
+        doSwapeRefresh();
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
 
@@ -119,16 +120,17 @@ public class MainActivity extends AppCompatActivity
                 .subscribe(new Observer<Result<Data<WeixinArticles>>>() {
                     @Override
                     public void onCompleted() {
-
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onError(final Throwable e) {
-
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onNext(final Result<Data<WeixinArticles>> t) {
+                        mSwipeRefreshLayout.setRefreshing(false);
                         if (t.getErrorCode() == 0) {
                             Toast.makeText(MainActivity.this, "请求成功" + t.getResult().getLists().size() + "", Toast.LENGTH_SHORT).show();
                             lists = t.getResult().getLists();

@@ -20,4 +20,6 @@
     <dimen name="card_margin">8dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
